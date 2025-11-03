@@ -1,0 +1,53 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      
+      <h1 class="mb-3 text-center">To-Do List</h1>
+
+      <div class="input-group mb-3">
+        <input 
+          [(ngModel)]="task" 
+          type="text" 
+          class="form-control" 
+          placeholder="New Task" 
+          (keyup.enter)="addTask()"/>
+        <button class="btn btn-primary" (click)="addTask()">Add Task</button>
+      </div>
+
+      <ul class="list-group">
+
+        @for(task of taskList; track task.id) {
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            
+            <div class="flex-grow-3 d-flex align-items-center me-3">
+              <span class="badge bg-secondary me-3">{{task.id}}</span>
+              
+              @if (editTaskId === task.id) {
+                <input 
+                  [(ngModel)]="editedTaskName" 
+                  class="form-control form-control-sm" 
+                  (keyup.enter)="saveEdit()" 
+                  (keyup.escape)="cancelEdit()" 
+                  autofocus 
+                  (blur)="saveEdit()" />
+              } @else {
+                <span>{{task.name}}</span>
+              }
+            </div>
+            
+            <div class="btn-group" role="group">
+              @if (editTaskId === task.id) {
+                <button class="btn btn-success btn-sm" (click)="saveEdit()">Save</button>
+                <button class="btn btn-warning btn-sm" (click)="cancelEdit()">Cancel</button>
+              } @else {
+                <button class="btn btn-primary btn-sm" (click)="startEditTask(task.id, task.name)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteTask(task.id)">Delete</button>
+              }
+            </div>
+          </li>
+        } @empty {
+          <li class="list-group-item text-muted text-center">
+            Your to-do list is empty.
+          </li>
+        }
+      </ul> </div> </div> </div> ```
