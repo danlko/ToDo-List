@@ -1,4 +1,5 @@
 # ToDoList
+<img width="917" height="310" alt="image" src="https://github.com/user-attachments/assets/e6ef5bc1-d61d-4168-ac0c-80bdfd4723ef" />
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
 
