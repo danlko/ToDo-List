@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Crud } from './crud';
+import { Crud } from './todolist.service';
 
 describe('Crud', () => {
   let service: Crud;

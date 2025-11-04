@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Crud } from '../../service/crud';
+import { Crud } from '../../service/todolist.service';
 import { Task } from '../../model/task';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
-export class Dashboard implements OnInit {
+export class Dashboard{
   newTask = '';
   tasks: Observable<Task[]>;
   editTaskId: number | null = null;
@@ -21,8 +21,6 @@ export class Dashboard implements OnInit {
   constructor(private crudService: Crud) {
     this.tasks = this.crudService.getTasks();
   }
-
-  ngOnInit() {}
 
   addTask() {
     this.crudService.addTask(this.newTask);
